@@ -13,7 +13,7 @@ public class Constants {
     public static final double DRIVE_MOTOR_GEARING = 6.92;
     public static final double SPEED_GOVERNOR =.11; //.11 is a good safe start. Unlock it to "1" when you're confident with the robot
     public static final double TRACK_WIDE = .5842;
-    
+    //big chungus
      
     //SWERVE Drive Default Values
     public static final double ROBOTHoldAngleKP = .7; //Start at .7 and see where you go from there
@@ -43,10 +43,10 @@ public class Constants {
     //CHANGE TO 0 first, reset the sensor, 
     //PHYSICALLY zero out the motor 
     //place the OPPOSITE of the value
-    public static double FRSensorOffset = -44;
+    public static double FRSensorOffset = -39;
     public static double FLSensorOffset = 70;
     public static double BRSensorOffset = 27;
-    public static double BLSensorOffset = -81;
+    public static double BLSensorOffset = -79;
 
 
     //Give a positive input on the joystick or phoenix tuner
@@ -54,14 +54,14 @@ public class Constants {
     //Because of the gearing the convention could be reversed (GUESS AND CHECK)
     public static TalonFXInvertType FRInvertType = TalonFXInvertType.Clockwise;
     public static TalonFXInvertType FLInvertType = TalonFXInvertType.CounterClockwise;
-    public static TalonFXInvertType BRInvertType = TalonFXInvertType.Clockwise;
+    public static TalonFXInvertType BRInvertType = TalonFXInvertType.CounterClockwise;
     public static TalonFXInvertType BLInvertType = TalonFXInvertType.CounterClockwise;
 
     //Swerve Steering PIDs (kP, kI, kD)
     public static Gains FRSteerGains = new Gains(.01, 0, 0);
     public static Gains FLSteerGains = new Gains(.02, 0, 0);
     public static Gains BRSteerGains = new Gains(.02, 0, 0);
-    public static Gains BLSteerGains = new Gains(.005, 0, 0);
+    public static Gains BLSteerGains = new Gains(.02, 0, 0);
 
     //Swerve Driving PIDs (kP, kI, kD)
     //Once characterized the drive PIDs are meaningless

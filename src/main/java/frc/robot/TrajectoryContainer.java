@@ -30,7 +30,7 @@ public class TrajectoryContainer {
             config
         );
 
-        public static PathPlannerTrajectory heteroPath = PathPlanner.loadPath("autoTest 2022", 6, 2.5);
+        public static PathPlannerTrajectory heteroPath = PathPlanner.loadPath("fourBallAuto", 6, 2.5);
 
         public static Trajectory jonahTrajectory = TrajectoryGenerator.generateTrajectory(
             // Start at the origin facing the +X direction
