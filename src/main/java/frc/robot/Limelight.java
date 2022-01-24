@@ -6,6 +6,12 @@ import io.github.oblarg.oblog.Loggable;
 import io.github.oblarg.oblog.annotations.Log;
 
 public class Limelight implements Loggable {
+
+    public static class Pipelines{
+        public static final int RedBall = 1;
+    }
+
+
     private static NetworkTable table;
 
     @Log.BooleanBox(rowIndex = 0, columnIndex = 1)
