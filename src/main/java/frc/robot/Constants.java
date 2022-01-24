@@ -5,6 +5,17 @@ import com.ctre.phoenix.motorcontrol.TalonFXInvertType;
 public class Constants {
     public static final double XBOXDEADBAND = .1;
     
+    //LIMELIGHT CONSTANTS
+    // tv = is target there
+    // ta = area of target being seen (%)
+    // tx = horizontal offset
+    // ty = vertical offset
+    public static double tv = 0;
+    public static double ta = 0;
+    public static double tx = 0;
+    public static double ty = 0;
+    public static String limelight = "visionLimelight";
+
     //SWERVE MODULE CHARACTERISTICS
     public static final double WHEEL_RADIUS_METERS = .05138;
     public static final double WHEEL_BASE_METERS = 22.5 * 2.54/100; //18 inch wheel base to meters track width is 24in and wheel base is 22.5 in
