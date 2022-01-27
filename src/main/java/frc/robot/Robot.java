@@ -8,6 +8,7 @@ import com.kauailabs.navx.frc.AHRS;
 import com.pathplanner.lib.PathPlanner;
 import com.pathplanner.lib.PathPlannerTrajectory;
 
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.XboxController;
@@ -26,6 +27,7 @@ public class Robot extends TimedRobot {
   public static final boolean RUN_TRAJECTORY = true;
   public static SwerveDrive SWERVEDRIVE;
   public static SlurpIntake SLURPINTAKE;
+  public static AutoContainer AUTOCONTAINER;
   public static SwerveCharacterization SWERVERCHARACTERIZATION;
   public static SwerveTrajectory SWERVETRAJECTORY;
   public static XboxController xbox = new XboxController(0);
@@ -40,13 +42,18 @@ public class Robot extends TimedRobot {
     SwerveMap.driveRobotInit();
     SwerveMap.GYRO.reset();
     //we do singleton methodologies to allow the shuffleboard (Oblarg) logger to detect the existence of these. #askSam
-    //Swerve method starts here
+    // * Swerve method starts here *
     SWERVEDRIVE = SwerveDrive.getInstance();
     SWERVEDRIVE.init();
     SWERVEDRIVE.zeroSwerveDrive();
-    //Intake method starts here
-    SLURPINTAKE = SlurpIntake.getInstance();
-    SLURPINTAKE.init();
+
+    // ** Intake method starts here **
+    // SLURPINTAKE = SlurpIntake.getInstance();
+    // SLURPINTAKE.init();
+
+    // *** Auto Container starts here ***
+    AUTOCONTAINER = AutoContainer.getInstance();
+    AUTOCONTAINER.autoStateChooser();
 
     if(CHARACTERIZE_ROBOT){SWERVERCHARACTERIZATION = SwerveCharacterization.getInstance();}
     if(RUN_TRAJECTORY) {
@@ -92,6 +99,7 @@ public class Robot extends TimedRobot {
     //SwerveTrajectory.trajectoryRunner(TrajectoryContainer.jonahTrajectory, SWERVEDRIVE.m_odometry, SwerveMap.getRobotAngle());
     SwerveTrajectory.PathPlannerRunner(TrajectoryContainer.heteroPath, SWERVEDRIVE.m_odometry, SwerveMap.getRobotAngle());
     }
+
   }
 
   /** This function is called once when teleop is enabled. */
@@ -114,7 +122,7 @@ public class Robot extends TimedRobot {
       SWERVEDRIVE.getSDFieldRelative()
       );
       //intake code for teleop
-      SLURPINTAKE.spinIntake();
+      //SLURPINTAKE.spinIntake();
       
     
   }
