@@ -204,11 +204,26 @@ public class SwerveMap {
          * to the steering motor to update.
          * @param _angle (IN DEGREES)
          */
+        // public void setSteeringAngle(double _angle){
+        //     //double newAngleDemand = _angle;
+        //     double currentSensorPosition = readAngle();
+        //     double remainder = Math.IEEEremainder(currentSensorPosition, 360);
+        //     double newAngleDemand = _angle + currentSensorPosition -remainder;
+           
+        //     //System.out.println(mSteeringMotor.getSelectedSensorPosition()-remainder );
+        //     if(newAngleDemand - currentSensorPosition > 180.1){
+        //           newAngleDemand -= 360;
+        //       } else if (newAngleDemand - currentSensorPosition < -180.1){
+        //           newAngleDemand += 360;
+        //       }
+        //       var turnOutput = m_steeringPIDController.calculate(currentSensorPosition, newAngleDemand); 
+        //     mSteeringMotor.set(ControlMode.PercentOutput, turnOutput);
+        // }
         public void setSteeringAngle(double _angle){
-            //double newAngleDemand = _angle;
+            double newAngleDemand = _angle;
             double currentSensorPosition = readAngle();
-            double remainder = Math.IEEEremainder(currentSensorPosition, 360);
-            double newAngleDemand = _angle + currentSensorPosition -remainder;
+            //double remainder = Math.IEEEremainder(currentSensorPosition, 360);
+           // double newAngleDemand = _angle + currentSensorPosition -remainder;
            
             //System.out.println(mSteeringMotor.getSelectedSensorPosition()-remainder );
             if(newAngleDemand - currentSensorPosition > 180.1){
@@ -219,7 +234,6 @@ public class SwerveMap {
               var turnOutput = m_steeringPIDController.calculate(currentSensorPosition, newAngleDemand); 
             mSteeringMotor.set(ControlMode.PercentOutput, turnOutput);
         }
-        
         public static SwerveModuleState optimize(
             SwerveModuleState desiredState, Rotation2d currentAngle) {
           var delta = desiredState.angle.minus(currentAngle);
@@ -234,14 +248,20 @@ public class SwerveMap {
 
 
 
+        // public double readAngle() {
+        //     double angle = ((1 - (mSteeringSensor.getVoltage() / RobotController.getVoltage5V())) * 360
+        //             + mSteeringSensor.kOffsetDegrees + 360);
+        //     angle %= 360;
+        //    return angle -= 180;
+           
+        // }
         public double readAngle() {
             double angle = ((1 - (mSteeringSensor.getVoltage() / RobotController.getVoltage5V())) * 360
                     + mSteeringSensor.kOffsetDegrees + 360);
-            angle %= 360;
+            angle = Math.IEEEremainder(angle, 360);
            return angle -= 180;
            
         }
-      
     
     }
     
